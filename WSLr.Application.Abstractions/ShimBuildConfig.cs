@@ -2,4 +2,4 @@ using System;
 
 namespace WSLr.Application;
 
-public record ShimBuildConfig();
+public record ShimBuildConfig(ShimTarget shimTarget);
