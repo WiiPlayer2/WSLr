@@ -34,9 +34,27 @@ public class GenerateShimTest
         mocks.OutputWriter.Verify(x => x.Write(It.IsAny<OutputData>()));
     }
 
+    [TestMethod]
+    public async Task WithTarget_BuildsShim()
+    {
+        // Arrange
+        var mocks = new Mocks();
+        var subject = CreateSubject(mocks);
+        var shimTarget = ShimTarget.From("ls");
+        var runtime = TestRuntime.New();
+
+        // Act
+        await subject.With(shimTarget).Run(runtime);
+        
+        // Assert
+        mocks.ShimBuilder.Verify(x => x.Build(It.IsAny<ShimBuildConfig>()));
+    }
+
     private GenerateShim<TestRuntime> CreateSubject(Mocks? mocks = default)
     {
         mocks ??= new();
-        return new(mocks.OutputWriter.Object);
+        return new(
+            mocks.OutputWriter.Object,
+            mocks.ShimBuilder.Object);
     }
 }
