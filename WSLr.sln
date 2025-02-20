@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40-Domain", "40-Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50-Tests", "50-Tests", "{11FA6078-BA7A-4DA7-83CC-94036F027CBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementation.ShimProject", "WSLr.Implementation.ShimProject\WSLr.Implementation.ShimProject.csproj", "{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{E5E372E6-B0CB-4DE1-87C0-4666C3B8F623} = {8F7C2F67-8169-434D-98A3-C4C9AEFCFBEC}
 		{7380B398-F4EE-42FF-8FB8-A1F2354B4147} = {FF019E7C-ED21-4985-8B38-95F8443F8456}
 		{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA} = {FF019E7C-ED21-4985-8B38-95F8443F8456}
+		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A63C7A12-2DAB-49DB-9AD3-C0056043B8F9}
