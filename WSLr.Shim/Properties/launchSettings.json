@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WSLr.Shim": {
+      "commandName": "Project",
+      "commandLineArgs": "-lah"
+    }
+  }
+}
