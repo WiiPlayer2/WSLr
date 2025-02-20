@@ -12,11 +12,13 @@
       <!-- Shim Defaults -->
 	  <ShimDefaultDebugEnabled>true</ShimDefaultDebugEnabled>
 	  <ShimDefaultBinary>ls</ShimDefaultBinary>
+	  <ShimDefaultFixInputLineEndings>false</ShimDefaultFixInputLineEndings>
   </PropertyGroup>
 
 	<ItemGroup>
         <Constant Include="ShimDefaults.DebugEnabled" Value="$(ShimDefaultDebugEnabled)" Type="bool" />
         <Constant Include="ShimDefaults.Binary" Value="$(ShimDefaultBinary)" />
+        <Constant Include="ShimDefaults.FixInputLineEndings" Value="$(ShimDefaultFixInputLineEndings)" Type="bool" />
 	</ItemGroup>
 
   <ItemGroup>

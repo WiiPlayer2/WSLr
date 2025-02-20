@@ -4,6 +4,8 @@
       "commandName": "Project",
       "commandLineArgs": "-lah",
       "environmentVariables": {
+        "WSLR_SHIM_BINARY": "bash",
+        "WSLR_SHIM_FIX_INPUT_LINE_ENDINGS": "true"
       }
     }
   }

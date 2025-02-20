@@ -1,4 +1,5 @@
 ﻿using CliWrap;
+using WSLr.Shim;
 
 var execConfig = LoadExecConfig();
 DebugWriteLine("<init>");
@@ -9,7 +10,10 @@ var result = await Cli.Wrap("wsl")
     .WithArguments(builder => builder
         .Add(execConfig.Binary)
         .Add(args))
-    .WithStandardInputPipe(PipeSource.FromStream(Console.OpenStandardInput()))
+    .WithStandardInputPipe(PipeSource.FromStream(
+        execConfig.FixInputLineEndings
+            ? new LineEndingStream(Console.OpenStandardInput())
+            : Console.OpenStandardInput()))
     .WithStandardOutputPipe(PipeTarget.ToStream(Console.OpenStandardOutput()))
     .WithStandardErrorPipe(PipeTarget.ToStream(Console.OpenStandardError()))
     .WithValidation(CommandResultValidation.None)
@@ -44,10 +48,12 @@ ExecConfig LoadExecConfig()
     const string envPrefix = "WSLR_SHIM_";
     const string envDebugEnabled = $"{envPrefix}DEBUG_ENABLED";
     const string envBinary = $"{envPrefix}BINARY";
+    const string envFixInputLineEndings = $"{envPrefix}FIX_INPUT_LINE_ENDINGS";
 
     return new ExecConfig(
         LoadBool(envDebugEnabled, ThisAssembly.Constants.ShimDefaults.DebugEnabled),
-        LoadString(envBinary, ThisAssembly.Constants.ShimDefaults.Binary));
+        LoadString(envBinary, ThisAssembly.Constants.ShimDefaults.Binary),
+        LoadBool(envFixInputLineEndings, ThisAssembly.Constants.ShimDefaults.FixInputLineEndings));
 
     bool LoadBool(string environmentVariable, bool defaultValue) =>
         LoadEnv(environmentVariable, x => string.Equals(x, "true", StringComparison.InvariantCultureIgnoreCase), defaultValue);
@@ -66,4 +72,5 @@ ExecConfig LoadExecConfig()
 
 internal record ExecConfig(
     bool DebugEnabled,
-    string Binary);
+    string Binary,
+    bool FixInputLineEndings);
