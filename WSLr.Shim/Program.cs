@@ -1,17 +1,13 @@
 ﻿using CliWrap;
 
-var debugEnabled = ThisAssembly.Constants.ShimDefaults.DebugEnabled;
-
+var execConfig = LoadExecConfig();
 DebugWriteLine("<init>");
-var wslBinary = ThisAssembly.Constants.ShimDefaults.Binary;
-DebugWriteLine("Binary: {0}", wslBinary);
-DebugWriteLine("Arguments: {0}", string.Join(" ", args));
-
+DebugExecConfig();
 
 DebugWriteLine("<exec>");
 var result = await Cli.Wrap("wsl")
     .WithArguments(builder => builder
-        .Add(wslBinary)
+        .Add(execConfig.Binary)
         .Add(args))
     .WithStandardInputPipe(PipeSource.FromStream(Console.OpenStandardInput()))
     .WithStandardOutputPipe(PipeTarget.ToStream(Console.OpenStandardOutput()))
@@ -20,14 +16,54 @@ var result = await Cli.Wrap("wsl")
     .ExecuteAsync();
 
 DebugWriteLine("<exit>");
-DebugWriteLine("Exit Code: {0}", result.ExitCode);
+DebugResult();
 
 return result.ExitCode;
 
 void DebugWriteLine(string format, params object[] args)
 {
-    if (!debugEnabled)
+    if (!execConfig.DebugEnabled)
         return;
 
     Console.Error.WriteLine($"[WSLr] {string.Format(format, args)}");
 }
+
+void DebugExecConfig()
+{
+    DebugWriteLine("Binary: {0}", execConfig.Binary);
+    DebugWriteLine("Arguments: {0}", string.Join(" ", args));
+}
+
+void DebugResult()
+{
+    DebugWriteLine("Exit Code: {0}", result.ExitCode);
+}
+
+ExecConfig LoadExecConfig()
+{
+    const string envPrefix = "WSLR_SHIM_";
+    const string envDebugEnabled = $"{envPrefix}DEBUG_ENABLED";
+    const string envBinary = $"{envPrefix}BINARY";
+
+    return new ExecConfig(
+        LoadBool(envDebugEnabled, ThisAssembly.Constants.ShimDefaults.DebugEnabled),
+        LoadString(envBinary, ThisAssembly.Constants.ShimDefaults.Binary));
+
+    bool LoadBool(string environmentVariable, bool defaultValue) =>
+        LoadEnv(environmentVariable, x => string.Equals(x, "true", StringComparison.InvariantCultureIgnoreCase), defaultValue);
+
+    string LoadString(string environmentVariable, string defaultValue) =>
+        LoadEnv(environmentVariable, x => x, defaultValue);
+
+    T LoadEnv<T>(string environmentVariable, Func<string, T> map, T defaultValue)
+    {
+        var envValue = Environment.GetEnvironmentVariable(environmentVariable);
+        return envValue is null
+            ? defaultValue
+            : map(envValue);
+    }
+}
+
+internal record ExecConfig(
+    bool DebugEnabled,
+    string Binary);
