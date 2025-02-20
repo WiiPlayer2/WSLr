@@ -1,8 +1,3 @@
-using FluentAssertions;
-using LanguageExt.Sys.Test;
-using WSLr.Application;
-using WSLr.Domain;
-
 namespace WSLr.Tests.Application;
 
 [TestClass]
@@ -14,17 +9,34 @@ public class GenerateShimTest
         // Arrange
         var subject = CreateSubject();
         var shimBinary = ShimBinary.From("ls");
-        var runtime = Runtime.New();
+        var runtime = TestRuntime.New();
 
         // Act
         var result = await subject.With(shimBinary).Run(runtime);
 
         // Assert
-        (result as IComparable<Fin<Unit>>).Should().Be(unit);
+        result.Should().BeSuccess();
     }
 
-    private GenerateShim<Runtime> CreateSubject()
+    [TestMethod]
+    public async Task WithBinary_WritesOutput()
     {
-        return new();
+        // Arrange
+        var mocks = new Mocks();
+        var subject = CreateSubject(mocks);
+        var shimBinary = ShimBinary.From("ls");
+        var runtime = TestRuntime.New();
+
+        // Act
+        await subject.With(shimBinary).Run(runtime);
+
+        // Assert
+        mocks.OutputWriter.Verify(x => x.Write(It.IsAny<OutputData>()));
+    }
+
+    private GenerateShim<TestRuntime> CreateSubject(Mocks? mocks = default)
+    {
+        mocks ??= new();
+        return new(mocks.OutputWriter.Object);
     }
 }
