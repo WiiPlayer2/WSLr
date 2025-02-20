@@ -1,9 +1,9 @@
 ﻿using CliWrap;
 
-var debugEnabled = true;
+var debugEnabled = ThisAssembly.Constants.ShimDefaults.DebugEnabled;
 
 DebugWriteLine("<init>");
-var wslBinary = "ls";
+var wslBinary = ThisAssembly.Constants.ShimDefaults.Binary;
 DebugWriteLine("Binary: {0}", wslBinary);
 DebugWriteLine("Arguments: {0}", string.Join(" ", args));
 

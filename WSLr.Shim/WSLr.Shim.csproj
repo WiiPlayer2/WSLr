@@ -8,7 +8,16 @@
     <PublishAot>true</PublishAot>
     <InvariantGlobalization>true</InvariantGlobalization>
 	<VersionPrefix>0.1</VersionPrefix>
+
+      <!-- Shim Defaults -->
+	  <ShimDefaultDebugEnabled>true</ShimDefaultDebugEnabled>
+	  <ShimDefaultBinary>ls</ShimDefaultBinary>
   </PropertyGroup>
+
+	<ItemGroup>
+        <Constant Include="ShimDefaults.DebugEnabled" Value="$(ShimDefaultDebugEnabled)" Type="bool" />
+        <Constant Include="ShimDefaults.Binary" Value="$(ShimDefaultBinary)" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.8.0" />
