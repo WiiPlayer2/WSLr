@@ -4,6 +4,9 @@ namespace WSLr.Tests.Domain;
 public class GetOutputFilenameTest
 {
     [DataRow("ls", "ls.exe")]
+    [DataRow("bash", "bash.exe")]
+    [DataRow("sh", "sh.exe")]
+    [DataRow("which", "which.exe")]
     [TestMethod]
     public void WithValidTarget_ReturnsValidOutputPath(string target, string expectedPath)
     {
