@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using WSLr.Cli;
 using WSLr.Cli.Commands;
 using WSLr.Cli.Commands.Handlers;
+using WSLr.Implementations.RoslynShimBuilder;
 
 var parser = BuildCommandLineParser();
 return parser.Invoke(args);
@@ -33,5 +34,6 @@ void ConfigureServices<RT>(HostBuilderContext hostContext, IServiceCollection se
     where RT : struct, HasCancel<RT>
 {
     services.AddNullServices<RT>();
+    services.AddRoslynShimBuilder<RT>();
     services.AddApplicationServices<RT>();
 }

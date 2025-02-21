@@ -5,13 +5,13 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSLr.Shim", "WSLr.Shim\WSLr.Shim.csproj", "{57457047-7A6C-4226-9C74-24B739BE7EFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Tests", "WSLr.Tests\WSLr.Tests.csproj", "{5656A208-707A-404A-9997-9881A810CC6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSLr.Tests", "WSLr.Tests\WSLr.Tests.csproj", "{5656A208-707A-404A-9997-9881A810CC6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Domain", "WSLr.Domain\WSLr.Domain.csproj", "{E5E372E6-B0CB-4DE1-87C0-4666C3B8F623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSLr.Domain", "WSLr.Domain\WSLr.Domain.csproj", "{E5E372E6-B0CB-4DE1-87C0-4666C3B8F623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Application", "WSLr.Application\WSLr.Application.csproj", "{7380B398-F4EE-42FF-8FB8-A1F2354B4147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSLr.Application", "WSLr.Application\WSLr.Application.csproj", "{7380B398-F4EE-42FF-8FB8-A1F2354B4147}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Application.Abstractions", "WSLr.Application.Abstractions\WSLr.Application.Abstractions.csproj", "{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WSLr.Application.Abstractions", "WSLr.Application.Abstractions\WSLr.Application.Abstractions.csproj", "{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-Presentation", "10-Presentation", "{4807B72F-8389-4C19-BC83-936E2EA69988}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementation.ShimProject", "WSLr.Implementation.ShimProject\WSLr.Implementation.ShimProject.csproj", "{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Cli", "WSLr.Cli\WSLr.Cli.csproj", "{13CF0BD7-DE98-4C31-A39E-C40541BC2702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementations.RoslynShimBuilder", "WSLr.Implementations.RoslynShimBuilder\WSLr.Implementations.RoslynShimBuilder.csproj", "{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{13CF0BD7-DE98-4C31-A39E-C40541BC2702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13CF0BD7-DE98-4C31-A39E-C40541BC2702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13CF0BD7-DE98-4C31-A39E-C40541BC2702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{F4A986A6-7AD7-4A98-9E90-14EA5ECC59DA} = {FF019E7C-ED21-4985-8B38-95F8443F8456}
 		{42BBB5CE-325D-4AB0-9E64-8C103B37ECDD} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
 		{13CF0BD7-DE98-4C31-A39E-C40541BC2702} = {4807B72F-8389-4C19-BC83-936E2EA69988}
+		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A63C7A12-2DAB-49DB-9AD3-C0056043B8F9}

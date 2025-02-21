@@ -8,12 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="LanguageExt.Sys" Version="4.4.9"/>
-        <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.22272.1"/>
+        <PackageReference Include="LanguageExt.Sys" Version="4.4.9" />
+        <PackageReference Include="System.CommandLine.Hosting" Version="0.4.0-alpha.22272.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\WSLr.Application\WSLr.Application.csproj"/>
+        <ProjectReference Include="..\WSLr.Application\WSLr.Application.csproj" />
+        <ProjectReference Include="..\WSLr.Implementations.RoslynShimBuilder\WSLr.Implementations.RoslynShimBuilder.csproj" />
     </ItemGroup>
 
 </Project>

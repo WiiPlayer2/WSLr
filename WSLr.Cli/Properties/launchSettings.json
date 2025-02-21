@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WSLr.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "generate-shim ls"
+    }
+  }
+}
