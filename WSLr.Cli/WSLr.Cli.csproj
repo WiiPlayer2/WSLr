@@ -14,7 +14,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\WSLr.Application\WSLr.Application.csproj" />
-        <ProjectReference Include="..\WSLr.Implementations.RoslynShimBuilder\WSLr.Implementations.RoslynShimBuilder.csproj" />
+        <ProjectReference Include="..\WSLr.Implementations.DotnetPublishShimBuilder\WSLr.Implementations.DotnetPublishShimBuilder.csproj"/>
+        <!--        <ProjectReference Include="..\WSLr.Implementations.RoslynShimBuilder\WSLr.Implementations.RoslynShimBuilder.csproj" />-->
     </ItemGroup>
 
 </Project>

@@ -4,6 +4,8 @@ public static class ProjectFiles
 {
     public static string ProjectFileName => "WSLr.Shim.csproj";
 
+    public static string ShimOutputFileName => "WSLr.Shim.exe";
+
     public static IEnumerable<ProjectFile> GetProjectFiles() =>
         typeof(ProjectFiles).Assembly.GetManifestResourceNames()
             .Select(x =>
