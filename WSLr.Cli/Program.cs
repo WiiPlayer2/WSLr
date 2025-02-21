@@ -5,6 +5,7 @@ using System.CommandLine.Parsing;
 using LanguageExt.Effects.Traits;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using WSLr.Cli;
 using WSLr.Cli.Commands;
 using WSLr.Cli.Commands.Handlers;
@@ -23,7 +24,9 @@ Parser BuildCommandLineParser() =>
             hostBuilder => hostBuilder
                 .ConfigureServices(services => services.AddSingleton(new CommandRuntime<Runtime>(Runtime.New())))
                 .ConfigureServices(ConfigureServices<Runtime>)
-                .UseCommandHandler<GenerateShimCommand, GenerateShimCommandHandler<Runtime>>())
+                .UseCommandHandler<GenerateShimCommand, GenerateShimCommandHandler<Runtime>>()
+                .ConfigureLogging(loggingBuilder => loggingBuilder
+                    .AddFilter("Microsoft", LogLevel.Warning)))
         .Build();
 
 void ConfigureServices<RT>(HostBuilderContext hostContext, IServiceCollection services)
