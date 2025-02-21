@@ -4,5 +4,5 @@ namespace WSLr.Cli.NullServices;
 
 internal class NullOutputWriter<RT> : IOutputWriter<RT> where RT : struct, HasCancel<RT>
 {
-    public Aff<RT, Unit> Write(OutputData data) => unitAff;
+    public Aff<RT, Unit> Write(OutputPath path, OutputData data) => unitAff;
 }

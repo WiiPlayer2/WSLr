@@ -8,3 +8,6 @@ public partial record ShimTarget;
 
 [ValueObject<Arr<byte>>]
 public partial record OutputData;
+
+[ValueObject<string>]
+public partial record OutputPath;

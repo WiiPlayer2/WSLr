@@ -4,5 +4,5 @@ namespace WSLr.Application;
 
 public interface IOutputWriter<RT> where RT : struct, HasCancel<RT>
 {
-    Aff<RT, Unit> Write(OutputData data);
+    Aff<RT, Unit> Write(OutputPath path, OutputData data);
 }

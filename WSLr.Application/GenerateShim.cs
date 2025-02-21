@@ -9,6 +9,6 @@ public class GenerateShim<RT>(IOutputWriter<RT> outputWriter, IShimBuilder<RT> s
         from buildConfig in SuccessAff(new ShimBuildConfig(
             shimTarget))
         from outputData in shimBuilder.Build(buildConfig)
-        from _ in outputWriter.Write(outputData)
+        from _ in outputWriter.Write(OutputPath.From("ls.exe"), outputData)
         select unit;
 }
