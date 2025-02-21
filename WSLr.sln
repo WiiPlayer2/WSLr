@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementations.Roslyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementations.DotnetPublishShimBuilder", "WSLr.Implementations.DotnetPublishShimBuilder\WSLr.Implementations.DotnetPublishShimBuilder.csproj", "{10624979-4390-4BF9-A0DF-FADD0FFC9A91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLr.Implementations.FileOutputWriter", "WSLr.Implementations.FileOutputWriter\WSLr.Implementations.FileOutputWriter.csproj", "{4A08DD50-8840-4D8E-9CBA-4E706916D4BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{10624979-4390-4BF9-A0DF-FADD0FFC9A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10624979-4390-4BF9-A0DF-FADD0FFC9A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10624979-4390-4BF9-A0DF-FADD0FFC9A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A08DD50-8840-4D8E-9CBA-4E706916D4BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A08DD50-8840-4D8E-9CBA-4E706916D4BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A08DD50-8840-4D8E-9CBA-4E706916D4BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A08DD50-8840-4D8E-9CBA-4E706916D4BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{13CF0BD7-DE98-4C31-A39E-C40541BC2702} = {4807B72F-8389-4C19-BC83-936E2EA69988}
 		{583E9F6E-CC07-46C6-A4EF-61FCF410EAD0} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
 		{10624979-4390-4BF9-A0DF-FADD0FFC9A91} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
+		{4A08DD50-8840-4D8E-9CBA-4E706916D4BE} = {A7D183EA-5471-44D3-AB82-365C196C6AF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A63C7A12-2DAB-49DB-9AD3-C0056043B8F9}

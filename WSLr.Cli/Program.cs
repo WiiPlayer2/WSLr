@@ -10,6 +10,7 @@ using WSLr.Cli;
 using WSLr.Cli.Commands;
 using WSLr.Cli.Commands.Handlers;
 using WSLr.Implementations.DotnetPublishShimBuilder;
+using WSLr.Implementations.FileOutputWriter;
 
 // using WSLr.Implementations.RoslynShimBuilder;
 
@@ -38,5 +39,6 @@ void ConfigureServices<RT>(HostBuilderContext hostContext, IServiceCollection se
     services.AddNullServices<RT>();
     // services.AddRoslynShimBuilder<RT>(); // currently does not work due to nuget resolution not working
     services.AddDotnetPublishShimBuilder<RT>();
+    services.AddFileOutputWriter<RT>();
     services.AddApplicationServices<RT>();
 }
