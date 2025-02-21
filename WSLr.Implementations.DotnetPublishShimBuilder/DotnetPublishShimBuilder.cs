@@ -23,6 +23,7 @@ internal class DotnetPublishShimBuilder<RT> : IShimBuilder<RT> where RT : struct
                             "-p:PublishSingleFile=true",
                             "-p:PublishTrimmed=true",
                             "--output", outputPath,
+                            $"-p:ShimDefaultBinary={buildConfig.shimTarget.Value}",
                         ]))
                     .ExecuteAsync(rt.CancellationToken))
                 from shimOutputPath in Eff(() => Path.Join(projectFilesDirectory.Path.FullName, "out", ProjectFiles.ShimOutputFileName))
