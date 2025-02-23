@@ -42,7 +42,7 @@
             dotnet nuget push out/*.nupkg \
               --skip-duplicate \
               --source https://api.nuget.org/v3/index.json \
-              --api-key $NUGET_API_KEY
+              --api-key "$NUGET_API_KEY"
           '';
         };
       in
