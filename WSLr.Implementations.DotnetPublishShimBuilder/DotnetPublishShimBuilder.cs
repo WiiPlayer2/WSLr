@@ -25,6 +25,7 @@ internal class DotnetPublishShimBuilder<RT>(ILogger<DotnetPublishShimBuilder<RT>
                             "-p:PublishSingleFile=true",
                             "-p:PublishTrimmed=true",
                             "--output", outputPath,
+                            "-p:ShimDefaultDebugEnabled=false",
                             $"-p:ShimDefaultBinary={buildConfig.Target.Value}",
                             $"-p:ShimDefaultFixInputLineEndings={buildConfig.FixInputLineEndings.Value.ToString(CultureInfo.InvariantCulture).ToLowerInvariant()}",
                         ]))
