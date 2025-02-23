@@ -1,5 +1,5 @@
-using System;
-
 namespace WSLr.Application;
 
-public record ShimBuildConfig(ShimTarget shimTarget);
+public record ShimBuildConfig(
+    ShimTarget Target,
+    ShimFixStreamLineEndings FixStreamLineEndings);
