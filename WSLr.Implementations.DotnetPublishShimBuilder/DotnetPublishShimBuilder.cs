@@ -1,10 +1,12 @@
-﻿using CliWrap;
+﻿using System.Globalization;
+using CliWrap;
 using LanguageExt.Effects.Traits;
+using Microsoft.Extensions.Logging;
 using WSLr.Implementation.ShimProject;
 
 namespace WSLr.Implementations.DotnetPublishShimBuilder;
 
-internal class DotnetPublishShimBuilder<RT> : IShimBuilder<RT> where RT : struct, HasCancel<RT>
+internal class DotnetPublishShimBuilder<RT>(ILogger<DotnetPublishShimBuilder<RT>> logger) : IShimBuilder<RT> where RT : struct, HasCancel<RT>
 {
     public Aff<RT, OutputData> Build(ShimBuildConfig buildConfig) =>
         use(
@@ -24,7 +26,10 @@ internal class DotnetPublishShimBuilder<RT> : IShimBuilder<RT> where RT : struct
                             "-p:PublishTrimmed=true",
                             "--output", outputPath,
                             $"-p:ShimDefaultBinary={buildConfig.Target.Value}",
+                            $"-p:ShimDefaultFixInputLineEndings={buildConfig.FixInputLineEndings.Value.ToString(CultureInfo.InvariantCulture).ToLowerInvariant()}",
                         ]))
+                    .WithStandardOutputPipe(PipeTarget.ToDelegate(line => logger.LogDebug(line)))
+                    .WithStandardErrorPipe(PipeTarget.ToDelegate(line => logger.LogError(line)))
                     .ExecuteAsync(rt.CancellationToken))
                 from shimOutputPath in Eff(() => Path.Join(projectFilesDirectory.Path.FullName, "out", ProjectFiles.ShimOutputFileName))
                 from shimData in Aff((RT rt) => File.ReadAllBytesAsync(shimOutputPath).ToValue())

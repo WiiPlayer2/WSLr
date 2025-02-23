@@ -30,7 +30,10 @@ Parser BuildCommandLineParser() =>
                 .ConfigureServices(ConfigureServices<Runtime>)
                 .UseCommandHandler<GenerateShimCommand, GenerateShimCommandHandler<Runtime>>()
                 .ConfigureLogging(loggingBuilder => loggingBuilder
-                    .AddFilter("Microsoft", LogLevel.Warning)))
+                    .AddFilter("Microsoft", LogLevel.Warning)
+                    .AddFilter("WSLr", LogLevel.Debug)
+                    .AddConsole())
+        )
         .Build();
 
 void ConfigureServices<RT>(HostBuilderContext hostContext, IServiceCollection services)

@@ -24,7 +24,7 @@ public class GenerateShimTest
     {
         // Arrange
         var shimTarget = ShimTarget.From("ls");
-        var shimFixStreamLineEndings = ShimFixStreamLineEndings.From(false);
+        var shimFixStreamLineEndings = ShimFixInputLineEndings.From(false);
         var expectedBuildConfig = new ShimBuildConfig(shimTarget, shimFixStreamLineEndings);
         var expectedOutputFile = OutputPath.From("ls.exe");
         var expectedOutputData = OutputData.From(Array<byte>(0xCA, 0xFE));
@@ -73,18 +73,18 @@ public class GenerateShimTest
     }
 
     [TestMethod]
-    public async Task WithTargetAndFixStreamLineEndings_BuildsShim()
+    public async Task WithTargetAndFixInputLineEndings_BuildsShim()
     {
         // Arrange
         var mocks = new Mocks();
         var subject = CreateSubject(mocks);
         var shimTarget = ShimTarget.From("ls");
-        var shimFixStreamLineEndings = ShimFixStreamLineEndings.From(true);
+        var fixInputLineEndings = ShimFixInputLineEndings.From(true);
         var runtime = TestRuntime.New();
-        var expectedShimBuildConfig = new ShimBuildConfig(shimTarget, shimFixStreamLineEndings);
+        var expectedShimBuildConfig = new ShimBuildConfig(shimTarget, fixInputLineEndings);
 
         // Act
-        await subject.With(shimTarget, shimFixStreamLineEndings).Run(runtime);
+        await subject.With(shimTarget, fixInputLineEndings).Run(runtime);
 
         // Assert
         mocks.ShimBuilder.Verify(x => x.Build(expectedShimBuildConfig));

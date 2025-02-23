@@ -13,7 +13,9 @@ public class GenerateShimCommandHandler<RT>(CommandRuntime<RT> commandRuntime, G
     (
         from shimTarget in Eff(() => context.ParseResult.GetValueForArgument(Arguments.Target))
             .Map(ShimTarget.From)
-        from _ in generateShim.With(shimTarget)
+        from shimFixInputLineEndings in Eff(() => context.ParseResult.GetValueForOption(Options.FixInputLineEndings))
+            .Map(ShimFixInputLineEndings.From)
+        from _ in generateShim.With(shimTarget, shimFixInputLineEndings)
         select unit
     ).RunCommand(commandRuntime, logger);
 }

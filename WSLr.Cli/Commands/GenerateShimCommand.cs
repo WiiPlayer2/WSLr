@@ -7,5 +7,6 @@ public class GenerateShimCommand : Command
     public GenerateShimCommand() : base("generate-shim")
     {
         Add(Commands.Arguments.Target);
+        Add(Commands.Options.FixInputLineEndings);
     }
 }

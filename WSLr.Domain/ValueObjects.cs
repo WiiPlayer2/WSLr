@@ -7,7 +7,7 @@ namespace WSLr.Domain;
 public partial record ShimTarget;
 
 [ValueObject<bool>]
-public partial record ShimFixStreamLineEndings;
+public partial record ShimFixInputLineEndings;
 
 [ValueObject<Arr<byte>>]
 public partial record OutputData;
